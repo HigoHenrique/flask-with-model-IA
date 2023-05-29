@@ -9,7 +9,7 @@ from keras.preprocessing import image
 from keras.models import load_model
 
 app = Flask(__name__)
-model = load_model('modelo-cat-dog.h5')
+model = load_model('modelo-day-night.h5')
 
 app.config['UPLOAD_FOLDER'] = 'static'
 
@@ -25,9 +25,9 @@ def preprocess(img):
 def get_class_info(img_processed):
     prediction = model.predict(img_processed)
     if prediction < 0.5:
-        return "Prediction: Cat (%.2f%%)" % (100 - prediction[0][0] * 100)
+        return "Está paisagem tem %.2f%% de chance de está de dia" % (100 - prediction[0][0] * 100)
     else:
-        return "Prediction: Dog (%.2f%%)" % (prediction[0][0] * 100)
+        return "Está paisagem tem %.2f%% de chance de está de Noite" % (prediction[0][0] * 100)
 
 
 @app.route('/')
