@@ -25,9 +25,9 @@ def preprocess(img):
 def get_class_info(img_processed):
     prediction = model.predict(img_processed)
     if prediction < 0.5:
-        return "Está paisagem tem %.2f%% de chance de está de dia" % (100 - prediction[0][0] * 100)
+        return "Esta paisagem tem %.2f%% de chance de estar de dia" % (100 - prediction[0][0] * 100)
     else:
-        return "Está paisagem tem %.2f%% de chance de está de Noite" % (prediction[0][0] * 100)
+        return "Esta paisagem tem %.2f%% de chance de estar de Noite" % (prediction[0][0] * 100)
 
 
 @app.route('/')
